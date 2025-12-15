@@ -43,8 +43,7 @@ Ensure you have Python 3.10 or newer installed.
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/inmoov-studio.git <<<CHANGE THIS
-cd inmoov-studio <<<CHANGE THIS
+git clone https://github.com/Nestorovski/A-Nervous-System-for-a-Fully-Actuated-Humanoid/tree/main 
 
 # Install dependencies
 pip install PyQt6 pyserial numpy pyqtgraph PyOpenGL
