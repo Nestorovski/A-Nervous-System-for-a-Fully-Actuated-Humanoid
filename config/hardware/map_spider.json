@@ -1,0 +1,93 @@
+{
+    "metadata": {
+        "version": "1.3",
+        "description": "InMoov Distributed Hardware Map",
+        "source": "map_spider.json"
+    },
+    "mapping": {
+        "101": {
+            "name": "R1_HIP",
+            "mux_port": 0,
+            "pca_pin": 0,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "102": {
+            "name": "R1_KNEE",
+            "mux_port": 0,
+            "pca_pin": 1,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "103": {
+            "name": "R2_HIP",
+            "mux_port": 0,
+            "pca_pin": 2,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "104": {
+            "name": "R2_KNEE",
+            "mux_port": 0,
+            "pca_pin": 3,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "105": {
+            "name": "R3_HIP",
+            "mux_port": 0,
+            "pca_pin": 4,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "106": {
+            "name": "R3_KNEE",
+            "mux_port": 0,
+            "pca_pin": 5,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "107": {
+            "name": "L1_HIP",
+            "mux_port": 1,
+            "pca_pin": 0,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "108": {
+            "name": "L1_KNEE",
+            "mux_port": 1,
+            "pca_pin": 1,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "109": {
+            "name": "L2_HIP",
+            "mux_port": 1,
+            "pca_pin": 2,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "110": {
+            "name": "L2_KNEE",
+            "mux_port": 1,
+            "pca_pin": 3,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "111": {
+            "name": "L3_HIP",
+            "mux_port": 1,
+            "pca_pin": 4,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "112": {
+            "name": "L3_KNEE",
+            "mux_port": 1,
+            "pca_pin": 5,
+            "motor_type": "sg90",
+            "ads_channel": null
+        }
+    }
+}

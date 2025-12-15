@@ -1,0 +1,9 @@
+{
+    "app_theme": "Cyber Dark",
+    "skeleton_color": "Bone",
+    "safety_collision_enabled": true,
+    "motor_max_speed": 80,
+    "motor_tolerance": 15,
+    "visual_ghost_opacity": 0.3,
+    "last_serial_port": null
+}

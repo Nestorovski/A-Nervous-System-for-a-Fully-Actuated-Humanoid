@@ -1,0 +1,303 @@
+{
+    "metadata": {
+        "version": "1.3",
+        "description": "InMoov Distributed Hardware Map",
+        "source": "map_default.json"
+    },
+    "mapping": {
+        "1": {
+            "name": "MOTOR1A",
+            "mux_port": 0,
+            "pca_pin": 5,
+            "motor_type": "n20",
+            "ads_channel": 0
+        },
+        "2": {
+            "name": "MOTOR2A",
+            "mux_port": 0,
+            "pca_pin": 8,
+            "motor_type": "n20",
+            "ads_channel": 2
+        },
+        "3": {
+            "name": "MOTOR1B",
+            "mux_port": 0,
+            "pca_pin": 0,
+            "motor_type": "n20",
+            "ads_channel": 1
+        },
+        "4": {
+            "name": "MOTOR1A",
+            "mux_port": 1,
+            "pca_pin": 5,
+            "motor_type": "n20",
+            "ads_channel": 0
+        },
+        "5": {
+            "name": "MOTOR1B",
+            "mux_port": 1,
+            "pca_pin": 0,
+            "motor_type": "n20",
+            "ads_channel": 1
+        },
+        "6": {
+            "name": "MOTOR2A",
+            "mux_port": 1,
+            "pca_pin": 8,
+            "motor_type": "n20",
+            "ads_channel": 2
+        },
+        "7": {
+            "name": "MOTOR2B",
+            "mux_port": 1,
+            "pca_pin": 13,
+            "motor_type": "n20",
+            "ads_channel": 3
+        },
+        "8": {
+            "name": "MOTOR1A",
+            "mux_port": 2,
+            "pca_pin": 5,
+            "motor_type": "n20",
+            "ads_channel": 0
+        },
+        "9": {
+            "name": "MOTOR1B",
+            "mux_port": 2,
+            "pca_pin": 0,
+            "motor_type": "n20",
+            "ads_channel": 1
+        },
+        "10": {
+            "name": "MOTOR2A",
+            "mux_port": 2,
+            "pca_pin": 8,
+            "motor_type": "n20",
+            "ads_channel": 2
+        },
+        "11": {
+            "name": "MOTOR2B",
+            "mux_port": 2,
+            "pca_pin": 13,
+            "motor_type": "n20",
+            "ads_channel": 3
+        },
+        "12": {
+            "name": "MOTOR1A",
+            "mux_port": 6,
+            "pca_pin": 5,
+            "motor_type": "n20",
+            "ads_channel": 0
+        },
+        "13": {
+            "name": "MOTOR1A",
+            "mux_port": 4,
+            "pca_pin": 5,
+            "motor_type": "n20",
+            "ads_channel": 0
+        },
+        "14": {
+            "name": "MOTOR1B",
+            "mux_port": 4,
+            "pca_pin": 0,
+            "motor_type": "n20",
+            "ads_channel": 1
+        },
+        "15": {
+            "name": "MOTOR2A",
+            "mux_port": 4,
+            "pca_pin": 8,
+            "motor_type": "n20",
+            "ads_channel": 2
+        },
+        "16": {
+            "name": "MOTOR2B",
+            "mux_port": 4,
+            "pca_pin": 13,
+            "motor_type": "n20",
+            "ads_channel": 3
+        },
+        "17": {
+            "name": "MOTOR1B",
+            "mux_port": 6,
+            "pca_pin": 0,
+            "motor_type": "n20",
+            "ads_channel": 1
+        },
+        "18": {
+            "name": "MOTOR2A",
+            "mux_port": 6,
+            "pca_pin": 8,
+            "motor_type": "n20",
+            "ads_channel": 2
+        },
+        "19": {
+            "name": "MOTOR1A",
+            "mux_port": 5,
+            "pca_pin": 5,
+            "motor_type": "n20",
+            "ads_channel": 0
+        },
+        "20": {
+            "name": "MOTOR1B",
+            "mux_port": 5,
+            "pca_pin": 0,
+            "motor_type": "n20",
+            "ads_channel": 1
+        },
+        "21": {
+            "name": "MOTOR2A",
+            "mux_port": 5,
+            "pca_pin": 8,
+            "motor_type": "n20",
+            "ads_channel": 2
+        },
+        "22": {
+            "name": "MOTOR2B",
+            "mux_port": 5,
+            "pca_pin": 13,
+            "motor_type": "n20",
+            "ads_channel": 3
+        },
+        "23": {
+            "name": "MOTOR2A",
+            "mux_port": 3,
+            "pca_pin": 8,
+            "motor_type": "n20",
+            "ads_channel": 2
+        },
+        "24": {
+            "name": "MOTOR1A",
+            "mux_port": 3,
+            "pca_pin": 5,
+            "motor_type": "n20",
+            "ads_channel": 0
+        },
+        "25": {
+            "name": "MOTOR1B",
+            "mux_port": 3,
+            "pca_pin": 0,
+            "motor_type": "n20",
+            "ads_channel": 1
+        },
+        "26": {
+            "name": "MOTOR2B",
+            "mux_port": 0,
+            "pca_pin": 13,
+            "motor_type": "n20",
+            "ads_channel": 3
+        },
+        "27": {
+            "name": "SERVO1",
+            "mux_port": 0,
+            "pca_pin": 6,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "28": {
+            "name": "SERVO2",
+            "mux_port": 0,
+            "pca_pin": 7,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "29": {
+            "name": "SERVO3",
+            "mux_port": 0,
+            "pca_pin": 14,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "30": {
+            "name": "SERVO1",
+            "mux_port": 1,
+            "pca_pin": 6,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "31": {
+            "name": "SERVO2",
+            "mux_port": 1,
+            "pca_pin": 7,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "32": {
+            "name": "SERVO1",
+            "mux_port": 2,
+            "pca_pin": 6,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "33": {
+            "name": "SERVO2",
+            "mux_port": 2,
+            "pca_pin": 7,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "34": {
+            "name": "SERVO1",
+            "mux_port": 3,
+            "pca_pin": 6,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "35": {
+            "name": "SERVO2",
+            "mux_port": 3,
+            "pca_pin": 7,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "36": {
+            "name": "SERVO1",
+            "mux_port": 4,
+            "pca_pin": 6,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "37": {
+            "name": "SERVO2",
+            "mux_port": 4,
+            "pca_pin": 7,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "38": {
+            "name": "SERVO1",
+            "mux_port": 5,
+            "pca_pin": 6,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "39": {
+            "name": "SERVO2",
+            "mux_port": 5,
+            "pca_pin": 7,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "40": {
+            "name": "SERVO1",
+            "mux_port": 6,
+            "pca_pin": 6,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "41": {
+            "name": "SERVO2",
+            "mux_port": 6,
+            "pca_pin": 7,
+            "motor_type": "sg90",
+            "ads_channel": null
+        },
+        "42": {
+            "name": "MOTOR2B",
+            "mux_port": 6,
+            "pca_pin": 13,
+            "motor_type": "n20",
+            "ads_channel": 3
+        }
+    }
+}

@@ -1,0 +1,500 @@
+{
+    "metadata": {
+        "id": "inmoov_standard_hifi",
+        "name": "InMoov Standard (Fixed Anatomy)",
+        "version": "14.1.0",
+        "author": "Gael Langevin / InMoov Community",
+        "units": "mm",
+        "safety_margin_mm": 2.0
+    },
+    "root_link": "pelvis",
+    "links": {
+        "pelvis": {
+            "mass_g": 2000.0,
+            "visual": {
+                "method": "loft",
+                "color": "bone",
+                "length_mm": 100.0,
+                "sections": [
+                    { "percent": 0.0, "shape": "box", "width": 280, "depth": 140 },
+                    { "percent": 1.0, "shape": "box", "width": 260, "depth": 130 }
+                ]
+            },
+            "children": ["mid_stomach"]
+        },
+        "mid_stomach": {
+            "parent": "pelvis",
+            "joint": { "name": "Torso Rotation", "id": "24", "type": "revolute", "axis": [0, 0, 1], "limits": [30, 150], "origin": [0, 0, 100] },
+            "mass_g": 800.0,
+            "visual": {
+                "method": "loft",
+                "color": "bone",
+                "length_mm": 120.0,
+                "sections": [
+                    { "percent": 0.0, "shape": "oval", "radius_x": 130, "radius_y": 65 },
+                    { "percent": 0.5, "shape": "oval", "radius_x": 120, "radius_y": 60 },
+                    { "percent": 1.0, "shape": "oval", "radius_x": 140, "radius_y": 70 }
+                ]
+            },
+            "children": ["chest"]
+        },
+        "chest": {
+            "parent": "mid_stomach",
+            "joint": { "name": "Torso Lateral", "id": "25", "type": "revolute", "axis": [0, 1, 0], "limits": [30, 150], "origin": [0, 0, 120] },
+            "mass_g": 2200.0,
+            "visual": {
+                "method": "loft",
+                "color": "bone",
+                "length_mm": 220.0,
+                "sections": [
+                    { "percent": 0.0, "shape": "oval", "radius_x": 140, "radius_y": 70 },
+                    { "percent": 0.4, "shape": "oval", "radius_x": 180, "radius_y": 90 },
+                    { "percent": 0.8, "shape": "oval", "radius_x": 190, "radius_y": 95 },
+                    { "percent": 1.0, "shape": "oval", "radius_x": 160, "radius_y": 80 }
+                ]
+            },
+            "children": ["neck_base", "shoulder_right", "shoulder_left"]
+        },
+        
+        "neck_base": {
+            "parent": "chest",
+            "joint": { "name": "Neck Roll", "id": "40", "type": "revolute", "axis": [0, 1, 0], "limits": [0, 180], "origin": [0, 0, 220] },
+            "visual": { "method": "cylinder", "radius": 40, "length_mm": 40, "color": "motor" },
+            "children": ["neck_tilt_link", "neck_piston_left", "neck_piston_right"]
+        },
+        "neck_piston_left": {
+            "parent": "neck_base",
+            "joint": { "name": "Neck Piston Left", "id": "1", "type": "prismatic", "axis": [0, 0, 1], "limits": [0, 180], "origin": [-40, -40, 0] },
+            "visual": { "method": "cylinder", "radius": 12, "length_mm": 100, "color": "muscle" },
+            "children": []
+        },
+        "neck_piston_right": {
+            "parent": "neck_base",
+            "joint": { "name": "Neck Piston Right", "id": "3", "type": "prismatic", "axis": [0, 0, 1], "limits": [0, 180], "origin": [40, -40, 0] },
+            "visual": { "method": "cylinder", "radius": 12, "length_mm": 100, "color": "muscle" },
+            "children": []
+        },
+        "neck_tilt_link": {
+            "parent": "neck_base",
+            "joint": { "name": "Neck Main Tilt", "id": "2", "type": "revolute", "axis": [1, 0, 0], "limits": [30, 150], "origin": [0, 0, 40] },
+            "visual": { "method": "cylinder", "radius": 35, "length_mm": 60, "color": "bone" },
+            "children": ["head"]
+        },
+        "head": {
+            "parent": "neck_tilt_link",
+            "joint": { "name": "Head Rotation", "id": "26", "type": "revolute", "axis": [0, 0, 1], "limits": [10, 170], "origin": [0, 0, 60] },
+            "visual": {
+                "method": "loft",
+                "color": "skin",
+                "length_mm": 200.0,
+                "sections": [
+                    { "percent": 0.0, "shape": "oval", "radius_x": 60, "radius_y": 70 },
+                    { "percent": 0.2, "shape": "oval", "radius_x": 70, "radius_y": 85 }, 
+                    { "percent": 0.5, "shape": "oval", "radius_x": 80, "radius_y": 95 },
+                    { "percent": 1.0, "shape": "oval", "radius_x": 70, "radius_y": 80 }
+                ]
+            },
+            "children": ["jaw", "eye_l", "eye_r", "brow_l", "brow_r", "nose_link"]
+        },
+        "jaw": {
+            "parent": "head",
+            "joint": { "name": "Jaw Mechanism", "id": "42", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [0, 10, 20] },
+            "visual": { "method": "loft", "color": "bone", "length_mm": 80, "sections": [{"percent": 0, "shape": "oval", "radius_x": 65, "radius_y": 70}, {"percent": 1, "shape": "oval", "radius_x": 50, "radius_y": 50}] },
+            "children": ["mouth_mech"]
+        },
+        "mouth_mech": {
+            "parent": "jaw",
+            "joint": { "name": "Mouth Height", "id": "37", "type": "prismatic", "axis": [0, 0, 1], "limits": [0, 180], "origin": [0, -70, 40] },
+            "visual": { "method": "box", "size": [40, 10, 10], "color": "motor" },
+            "children": ["mouth_width_link", "lip_l"]
+        },
+        "mouth_width_link": {
+            "parent": "mouth_mech",
+            "joint": { "name": "Mouth Width", "id": "36", "type": "prismatic", "axis": [1, 0, 0], "limits": [0, 180], "origin": [0, 0, 0] },
+            "visual": { "method": "box", "size": [10, 5, 5], "color": "skin" },
+            "children": []
+        },
+        "lip_l": { 
+            "parent": "mouth_mech", 
+            "joint": { "name": "Left Lip", "id": "33", "type": "revolute", "axis": [0, 0, 1], "limits": [0, 180], "origin": [-20, 0, 0] }, 
+            "visual": {"method": "sphere", "radius": 5}, 
+            "children": [] 
+        },
+
+        "eye_l": {
+            "parent": "head",
+            "joint": { "name": "Eyes X", "id": "31", "type": "revolute", "axis": [0, 0, 1], "limits": [0, 180], "origin": [-35, -75, 100] },
+            "visual": { "method": "sphere", "radius": 12, "color": "default" },
+            "children": ["eye_l_y", "eyelid_l"]
+        },
+        "eye_l_y": {
+            "parent": "eye_l",
+            "joint": { "name": "Eyes Y", "id": "32", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [0, 0, 0] },
+            "visual": { "method": "sphere", "radius": 5, "color": "default" },
+            "children": []
+        },
+        "eyelid_l": {
+            "parent": "eye_l",
+            "joint": { "name": "Left Eyelid", "id": "29", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [0, 0, 0] },
+            "visual": { "method": "sphere", "radius": 14, "color": "skin" },
+            "children": ["cheek_l"]
+        },
+        "cheek_l": { 
+            "parent": "eyelid_l", 
+            "joint": { "name": "Left Cheek", "id": "38", "type": "revolute", "axis": [0, 0, 1], "limits": [0, 180], "origin": [0, 20, -10] }, 
+            "visual": {"method": "sphere", "radius": 10}, 
+            "children": [] 
+        },
+
+        "eye_r": {
+            "parent": "head",
+            "joint": { "name": "Eyes X (Mirror)", "id": "31", "type": "revolute", "axis": [0, 0, 1], "limits": [0, 180], "origin": [35, -75, 100] },
+            "visual": { "method": "sphere", "radius": 12, "color": "default" },
+            "children": ["eyelid_r"]
+        },
+        "eyelid_r": {
+            "parent": "eye_r",
+            "joint": { "name": "Right Eyelid", "id": "30", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [0, 0, 0] },
+            "visual": { "method": "sphere", "radius": 14, "color": "skin" },
+            "children": ["cheek_r"]
+        },
+        "cheek_r": { 
+            "parent": "eyelid_r", 
+            "joint": { "name": "Right Cheek", "id": "34", "type": "revolute", "axis": [0, 0, 1], "limits": [0, 180], "origin": [0, 20, -10] }, 
+            "visual": {"method": "sphere", "radius": 10}, 
+            "children": [] 
+        },
+
+        "brow_l": {
+            "parent": "head",
+            "joint": { "name": "Left Eyebrow", "id": "27", "type": "revolute", "axis": [0, 1, 0], "limits": [0, 180], "origin": [-35, -80, 130] },
+            "visual": { "method": "box", "size": [30, 5, 5], "color": "motor" },
+            "children": []
+        },
+        "brow_r": {
+            "parent": "head",
+            "joint": { "name": "Right Eyebrow", "id": "28", "type": "revolute", "axis": [0, 1, 0], "limits": [0, 180], "origin": [35, -80, 130] },
+            "visual": { "method": "box", "size": [30, 5, 5], "color": "motor" },
+            "children": []
+        },
+        "nose_link": {
+            "parent": "head",
+            "joint": { "name": "Nose", "id": "35", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [0, -85, 80] },
+            "visual": { "method": "sphere", "radius": 10, "color": "skin" },
+            "children": []
+        },
+
+        "shoulder_right": {
+            "parent": "chest",
+            "joint": { "name": "Right Shoulder Pitch", "id": "8", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 160], "origin": [190, 0, 160] },
+            "visual": { "method": "sphere", "radius": 75, "color": "motor" },
+            "children": ["r_shoulder_roll_link"]
+        },
+        "r_shoulder_roll_link": {
+            "parent": "shoulder_right",
+            "joint": { "name": "Right Shoulder Roll", "id": "9", "type": "revolute", "axis": [0, 1, 0], "limits": [20, 160], "origin": [0, 0, 0] },
+            "visual": {
+                "method": "loft",
+                "color": "muscle",
+                "length_mm": 290.0,
+                "flip": true,
+                "sections": [
+                    { "percent": 0.0, "shape": "circle", "radius": 60 },
+                    { "percent": 0.4, "shape": "oval", "radius_x": 75, "radius_y": 65 },
+                    { "percent": 1.0, "shape": "circle", "radius": 50 }
+                ]
+            },
+            "children": ["r_elbow"]
+        },
+        "r_elbow": {
+            "parent": "r_shoulder_roll_link",
+            "joint": { "name": "Right Bicep Flexion", "id": "10", "type": "revolute", "axis": [1, 0, 0], "limits": [10, 170], "origin": [0, 0, -290] },
+            "visual": { "method": "sphere", "radius": 50, "color": "motor" },
+            "children": ["r_forearm"]
+        },
+        "r_forearm": {
+            "parent": "r_elbow",
+            "joint": { "name": "Right Bicep Rotate", "id": "11", "type": "revolute", "axis": [0, 0, 1], "limits": [20, 160], "origin": [0, 0, 0] },
+            "visual": {
+                "method": "loft",
+                "color": "bone",
+                "length_mm": 270.0,
+                "flip": true,
+                "sections": [
+                    { "percent": 0.0, "shape": "circle", "radius": 50 },
+                    { "percent": 0.3, "shape": "oval", "radius_x": 65, "radius_y": 45 },
+                    { "percent": 0.8, "shape": "oval", "radius_x": 45, "radius_y": 35 },
+                    { "percent": 1.0, "shape": "oval", "radius_x": 40, "radius_y": 30 }
+                ]
+            },
+            "children": ["r_wrist"]
+        },
+        "r_wrist": {
+            "parent": "r_forearm",
+            "joint": { "name": "Right Wrist Rotate", "id": "12", "type": "revolute", "axis": [0, 0, 1], "limits": [20, 160], "origin": [0, 0, -270] },
+            "visual": { "method": "sphere", "radius": 40, "color": "motor" },
+            "children": ["r_hand_palm"]
+        },
+        
+        "r_hand_palm": {
+            "parent": "r_wrist",
+            "visual": {
+                "method": "loft",
+                "color": "skin",
+                "length_mm": 90.0,
+                "flip": true,
+                "sections": [
+                    { "percent": 0.0, "shape": "box", "width": 80, "depth": 40 },
+                    { "percent": 0.5, "shape": "box", "width": 95, "depth": 30 },
+                    { "percent": 1.0, "shape": "box", "width": 90, "depth": 20 }
+                ]
+            },
+            "children": ["r_thumb_base", "r_index_base", "r_middle_base", "r_ring_base", "r_pinky_base"]
+        },
+
+        "r_thumb_base": {
+            "parent": "r_hand_palm",
+            "joint": { "name": "Right Thumb", "id": "13", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [45, 0, -30] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 40, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":18}, {"percent":1, "shape":"circle", "radius":16}] },
+            "children": ["r_thumb_tip"]
+        },
+        "r_thumb_tip": {
+            "parent": "r_thumb_base",
+            "joint": { "name": "R_Thumb_Distal", "id": "13", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -40] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 35, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":15}, {"percent":1, "shape":"circle", "radius":12}] },
+            "children": []
+        },
+
+        "r_index_base": {
+            "parent": "r_hand_palm",
+            "joint": { "name": "Right Index", "id": "14", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [35, 0, -90] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 40, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":16}, {"percent":1, "shape":"circle", "radius":15}] },
+            "children": ["r_index_mid"]
+        },
+        "r_index_mid": {
+            "parent": "r_index_base",
+            "joint": { "name": "R_Index_Mid", "id": "14", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -40] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 30, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":14}, {"percent":1, "shape":"circle", "radius":13}] },
+            "children": ["r_index_tip"]
+        },
+        "r_index_tip": {
+            "parent": "r_index_mid",
+            "joint": { "name": "R_Index_Tip", "id": "14", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -30] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 25, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":12}, {"percent":1, "shape":"circle", "radius":10}] },
+            "children": []
+        },
+
+        "r_middle_base": {
+            "parent": "r_hand_palm",
+            "joint": { "name": "Right Middle", "id": "15", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [12, 0, -92] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 45, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":17}, {"percent":1, "shape":"circle", "radius":16}] },
+            "children": ["r_middle_mid"]
+        },
+        "r_middle_mid": {
+            "parent": "r_middle_base",
+            "joint": { "name": "R_Middle_Mid", "id": "15", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -45] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 35, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":15}, {"percent":1, "shape":"circle", "radius":14}] },
+            "children": ["r_middle_tip"]
+        },
+        "r_middle_tip": {
+            "parent": "r_middle_mid",
+            "joint": { "name": "R_Middle_Tip", "id": "15", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -35] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 28, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":13}, {"percent":1, "shape":"circle", "radius":10}] },
+            "children": []
+        },
+
+        "r_ring_base": {
+            "parent": "r_hand_palm",
+            "joint": { "name": "Right Ring", "id": "16", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [-12, 0, -90] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 42, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":16}, {"percent":1, "shape":"circle", "radius":15}] },
+            "children": ["r_ring_mid"]
+        },
+        "r_ring_mid": {
+            "parent": "r_ring_base",
+            "joint": { "name": "R_Ring_Mid", "id": "16", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -42] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 32, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":14}, {"percent":1, "shape":"circle", "radius":13}] },
+            "children": ["r_ring_tip"]
+        },
+        "r_ring_tip": {
+            "parent": "r_ring_mid",
+            "joint": { "name": "R_Ring_Tip", "id": "16", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -32] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 26, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":12}, {"percent":1, "shape":"circle", "radius":10}] },
+            "children": []
+        },
+
+        "r_pinky_base": {
+            "parent": "r_hand_palm",
+            "joint": { "name": "Right Pinky", "id": "17", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [-35, 0, -85] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 35, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":14}, {"percent":1, "shape":"circle", "radius":13}] },
+            "children": ["r_pinky_mid"]
+        },
+        "r_pinky_mid": {
+            "parent": "r_pinky_base",
+            "joint": { "name": "R_Pinky_Mid", "id": "17", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -35] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 25, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":12}, {"percent":1, "shape":"circle", "radius":11}] },
+            "children": ["r_pinky_tip"]
+        },
+        "r_pinky_tip": {
+            "parent": "r_pinky_mid",
+            "joint": { "name": "R_Pinky_Tip", "id": "17", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -25] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 22, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":10}, {"percent":1, "shape":"circle", "radius":8}] },
+            "children": []
+        },
+
+        "shoulder_left": {
+            "parent": "chest",
+            "joint": { "name": "Left Shoulder Pitch", "id": "4", "type": "revolute", "axis": [1, 0, 0], "limits": [20, 180], "origin": [-190, 0, 160] },
+            "visual": { "method": "sphere", "radius": 75, "color": "motor" },
+            "children": ["l_shoulder_roll_link"]
+        },
+        "l_shoulder_roll_link": {
+            "parent": "shoulder_left",
+            "joint": { "name": "Left Shoulder Roll", "id": "5", "type": "revolute", "axis": [0, 1, 0], "limits": [20, 160], "origin": [0, 0, 0] },
+            "visual": {
+                "method": "loft",
+                "color": "muscle",
+                "length_mm": 290.0,
+                "flip": true,
+                "sections": [
+                    { "percent": 0.0, "shape": "circle", "radius": 60 },
+                    { "percent": 0.4, "shape": "oval", "radius_x": 75, "radius_y": 65 },
+                    { "percent": 1.0, "shape": "circle", "radius": 50 }
+                ]
+            },
+            "children": ["l_elbow"]
+        },
+        "l_elbow": {
+            "parent": "l_shoulder_roll_link",
+            "joint": { "name": "Left Bicep Flexion", "id": "6", "type": "revolute", "axis": [1, 0, 0], "limits": [10, 170], "origin": [0, 0, -290] },
+            "visual": { "method": "sphere", "radius": 50, "color": "motor" },
+            "children": ["l_forearm"]
+        },
+        "l_forearm": {
+            "parent": "l_elbow",
+            "joint": { "name": "Left Bicep Rotate", "id": "7", "type": "revolute", "axis": [0, 0, 1], "limits": [20, 160], "origin": [0, 0, 0] },
+            "visual": {
+                "method": "loft",
+                "color": "bone",
+                "length_mm": 270.0,
+                "flip": true,
+                "sections": [
+                    { "percent": 0.0, "shape": "circle", "radius": 50 },
+                    { "percent": 0.3, "shape": "oval", "radius_x": 65, "radius_y": 45 },
+                    { "percent": 0.8, "shape": "oval", "radius_x": 45, "radius_y": 35 },
+                    { "percent": 1.0, "shape": "oval", "radius_x": 40, "radius_y": 30 }
+                ]
+            },
+            "children": ["l_wrist"]
+        },
+        "l_wrist": {
+            "parent": "l_forearm",
+            "joint": { "name": "Left Wrist Rotate", "id": "18", "type": "revolute", "axis": [0, 0, 1], "limits": [20, 160], "origin": [0, 0, -270] },
+            "visual": { "method": "sphere", "radius": 40, "color": "motor" },
+            "children": ["l_hand_palm"]
+        },
+        "l_hand_palm": {
+            "parent": "l_wrist",
+            "visual": {
+                "method": "loft",
+                "color": "skin",
+                "length_mm": 90.0,
+                "flip": true,
+                "sections": [
+                    { "percent": 0.0, "shape": "box", "width": 80, "depth": 40 },
+                    { "percent": 0.5, "shape": "box", "width": 95, "depth": 30 },
+                    { "percent": 1.0, "shape": "box", "width": 90, "depth": 20 }
+                ]
+            },
+            "children": ["l_thumb_base", "l_index_base", "l_middle_base", "l_ring_base", "l_pinky_base"]
+        },
+
+        "l_thumb_base": {
+            "parent": "l_hand_palm",
+            "joint": { "name": "Left Thumb", "id": "19", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [-45, 0, -30] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 40, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":18}, {"percent":1, "shape":"circle", "radius":16}] },
+            "children": ["l_thumb_tip"]
+        },
+        "l_thumb_tip": {
+            "parent": "l_thumb_base",
+            "joint": { "name": "L_Thumb_Distal", "id": "19", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -40] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 35, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":15}, {"percent":1, "shape":"circle", "radius":12}] },
+            "children": []
+        },
+
+        "l_index_base": {
+            "parent": "l_hand_palm",
+            "joint": { "name": "Left Index", "id": "20", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [-35, 0, -90] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 40, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":16}, {"percent":1, "shape":"circle", "radius":15}] },
+            "children": ["l_index_mid"]
+        },
+        "l_index_mid": {
+            "parent": "l_index_base",
+            "joint": { "name": "L_Index_Mid", "id": "20", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -40] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 30, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":14}, {"percent":1, "shape":"circle", "radius":13}] },
+            "children": ["l_index_tip"]
+        },
+        "l_index_tip": {
+            "parent": "l_index_mid",
+            "joint": { "name": "L_Index_Tip", "id": "20", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -30] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 25, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":12}, {"percent":1, "shape":"circle", "radius":10}] },
+            "children": []
+        },
+
+        "l_middle_base": {
+            "parent": "l_hand_palm",
+            "joint": { "name": "Left Middle", "id": "21", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [-12, 0, -92] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 45, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":17}, {"percent":1, "shape":"circle", "radius":16}] },
+            "children": ["l_middle_mid"]
+        },
+        "l_middle_mid": {
+            "parent": "l_middle_base",
+            "joint": { "name": "L_Middle_Mid", "id": "21", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -45] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 35, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":15}, {"percent":1, "shape":"circle", "radius":14}] },
+            "children": ["l_middle_tip"]
+        },
+        "l_middle_tip": {
+            "parent": "l_middle_mid",
+            "joint": { "name": "L_Middle_Tip", "id": "21", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -35] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 28, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":13}, {"percent":1, "shape":"circle", "radius":10}] },
+            "children": []
+        },
+
+        "l_ring_base": {
+            "parent": "l_hand_palm",
+            "joint": { "name": "Left Ring", "id": "22", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [12, 0, -90] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 42, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":16}, {"percent":1, "shape":"circle", "radius":15}] },
+            "children": ["l_ring_mid"]
+        },
+        "l_ring_mid": {
+            "parent": "l_ring_base",
+            "joint": { "name": "L_Ring_Mid", "id": "22", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -42] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 32, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":14}, {"percent":1, "shape":"circle", "radius":13}] },
+            "children": ["l_ring_tip"]
+        },
+        "l_ring_tip": {
+            "parent": "l_ring_mid",
+            "joint": { "name": "L_Ring_Tip", "id": "22", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -32] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 26, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":12}, {"percent":1, "shape":"circle", "radius":10}] },
+            "children": []
+        },
+
+        "l_pinky_base": {
+            "parent": "l_hand_palm",
+            "joint": { "name": "Left Pinky", "id": "23", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 180], "origin": [35, 0, -85] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 35, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":14}, {"percent":1, "shape":"circle", "radius":13}] },
+            "children": ["l_pinky_mid"]
+        },
+        "l_pinky_mid": {
+            "parent": "l_pinky_base",
+            "joint": { "name": "L_Pinky_Mid", "id": "23", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -35] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 25, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":12}, {"percent":1, "shape":"circle", "radius":11}] },
+            "children": ["l_pinky_tip"]
+        },
+        "l_pinky_tip": {
+            "parent": "l_pinky_mid",
+            "joint": { "name": "L_Pinky_Tip", "id": "23", "type": "revolute", "axis": [1, 0, 0], "limits": [0, 90], "origin": [0, 0, -25] },
+            "visual": { "method": "loft", "color": "skin", "length_mm": 22, "flip": true, "sections": [{"percent":0, "shape":"circle", "radius":10}, {"percent":1, "shape":"circle", "radius":8}] },
+            "children": []
+        }
+    }
+}
