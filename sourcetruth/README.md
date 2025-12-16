@@ -7,7 +7,7 @@
 
 **Robot Studio** is a production-grade control engine designed to solve the "4-motor limit" of standard robotics shields. By utilizing a distributed I2C architecture, this platform allows a single Arduino Mega to control **42+ actuators** (DC Motors with feedback & Servos) simultaneously with smooth interpolation and physics-aware visualization.
 
-> **Read the full story:** [Scaling Up: A "Nervous System" for a Fully Actuated Humanoid](LINK_TO_YOUR_ARTICLE) <<<CHANGE THIS
+> **Read the full story:** [Scaling Up: A "Nervous System" for a Fully Actuated Humanoid](https://www.hackster.io/ivannestorovski1993/scalable-nervous-system-for-humanoids-2183e0)
 
 ---
 
